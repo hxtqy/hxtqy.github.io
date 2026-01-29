@@ -1,0 +1,20 @@
+name: Lint Markdown  # Action的名字
+on: [push, pull_request]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 拉取仓库代码
+        uses: actions/checkout@v4
+
+      - name: 安装Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: 安装write-good
+        run: npm install -g write-good
+
+      - name: 检查所有Markdown文件
+        run: find . -name "*.md" -type f | xargs write-good
