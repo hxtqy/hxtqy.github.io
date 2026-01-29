@@ -1,1 +1,1 @@
-这是一个非常很糟糕的句子，因为它有重复的词。
+This is a very very bad sentence.
