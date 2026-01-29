@@ -1,0 +1,15 @@
+name: ShellCheck  # Action的名字
+on: [push, pull_request]  # 触发时机：推送代码或发起PR时
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest  # 用Ubuntu虚拟机运行
+    steps:
+      - name: 拉取仓库代码
+        uses: actions/checkout@v4
+
+      - name: 安装shellcheck
+        run: sudo apt install -y shellcheck
+
+      - name: 检查所有shell文件
+        run: find . -name "*.sh" -type f | xargs shellcheck
